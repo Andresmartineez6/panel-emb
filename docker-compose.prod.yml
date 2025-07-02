@@ -15,7 +15,7 @@ services:
       - NODE_ENV=production
       - PORT=3001
     env_file:
-      - .env.production
+      - ./backend/.env.production
     networks:
       - panel-emb-network
     depends_on:
@@ -32,20 +32,30 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      target: production
+      target: final
+      args:
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+        - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+        - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
     container_name: panel-emb-frontend
     restart: always
     expose:
-      - "3000"
+      - "3100"
     environment:
       - NODE_ENV=production
-      - PORT=3000
+      - PORT=3100
     env_file:
-      - .env.production
+      - ./frontend/.env.production
     networks:
       - panel-emb-network
     depends_on:
       - backend
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3100"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # Redis para cache y sesiones
   redis:
