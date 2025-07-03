@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS users (
 -- Insertar usuarios del equipo EMB con la contraseña cifrada
 -- Contraseña: b#sHBEj9JrovK
 INSERT INTO users (username, password_hash, full_name, role) VALUES
-('andresemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Andrés EMB', 'admin'),
-('aguayoemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Aguayo EMB', 'member'),
-('alejandroemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Alejandro EMB', 'member'),
-('pepeemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Pepe EMB', 'member');
+('andresemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Andrés EMB', 'admin'), --Tambien hay rol de member
+('aguayoemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Aguayo EMB', 'admin'),
+('alejandroemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Alejandro EMB', 'admin'),
+('pepeemb', '$2b$12$8K8.vQZBzKzDZHq5QKH5wO4H5Z6Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2Z2', 'Pepe EMB', 'admin');
 
 -- Tabla de clientes
 CREATE TABLE IF NOT EXISTS clients (
