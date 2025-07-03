@@ -23,7 +23,6 @@ FROM node:18-alpine AS final
 WORKDIR /app
 
 # Copiar los archivos necesarios desde la etapa de build
-COPY --from=production /app/public ./public
 COPY --from=production /app/.next ./.next
 COPY --from=production /app/node_modules ./node_modules
 COPY --from=production /app/package.json ./

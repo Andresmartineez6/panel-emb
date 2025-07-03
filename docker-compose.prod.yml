@@ -41,6 +41,8 @@ services:
     restart: always
     expose:
       - "3100"
+    ports:
+      - "3100:3100"
     environment:
       - NODE_ENV=production
       - PORT=3100
@@ -109,4 +111,6 @@ volumes:
 
 networks:
   panel-emb-network:
+    external: true
+    name: emb-network
     driver: bridge

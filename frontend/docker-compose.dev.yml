@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: panel-emb-frontend-dev
+    build:
+      context: ./frontend
+    command: npm run dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3101:3000"
+    environment:
+      - NEXT_PUBLIC_SUPABASE_URL=TU_SUPABASE_URL
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=TU_SUPABASE_KEY
+    networks:
+      - emb-network
+
+  backend:
+    container_name: panel-emb-backend-dev
+    build:
+      context: ./backend
+    command: npm run start:dev
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - "3102:3000"
+    networks:
+      - emb-network
+
+networks:
+  emb-network:
+    external: true
